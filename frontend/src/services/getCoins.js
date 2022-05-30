@@ -1,6 +1,6 @@
-const getCoins = async () => {
+const getCoins = async (count) => {
   const res = await fetch(
-      "https://api.coinranking.com/v2/coins", 
+      `https://api.coinranking.com/v2/coins?limit=${count}`, 
       {
         "method": "GET",
         "headers": {

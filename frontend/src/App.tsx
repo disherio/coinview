@@ -16,7 +16,7 @@ const App: React.FC = () => {
       <Content className='content'>
       <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
+          <Route path="/cryptocurrencies" element={<Cryptocurrencies simplified={false}/>} />
           <Route path="/crypto/:coinId" element={<CryptoDetails price={"1"} name={"name"}/>} />
           <Route path="/exchanges" element={<Exchanges />} />
           <Route path="/news" element={<News />} />

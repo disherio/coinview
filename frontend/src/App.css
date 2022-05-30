@@ -21,3 +21,15 @@
   .content {
     padding: 3rem;
   }
+
+
+  .crypto-card .crypto-image{
+    width:35px;
+}
+
+.home-heading-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}

@@ -5,6 +5,7 @@ const getStats = async () => {
       {
         "method": "GET",
         "headers": {
+        // need to hide tokens in production
         "x-access-token": "",
         "content-type": "application/json",
         "accept": "application/json"
