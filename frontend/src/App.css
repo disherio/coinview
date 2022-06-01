@@ -33,3 +33,26 @@
   align-items: center;
   margin-top: 40px;
 }
+
+.news-card {
+  white-space: break-spaces;
+  min-height: 20rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .news-card {
+    min-height: 30rem;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .news-card {
+    min-height: 10rem;
+  }
+}
+
+
+
+.ant-card-head-title {
+  white-space: break-spaces;
+}
