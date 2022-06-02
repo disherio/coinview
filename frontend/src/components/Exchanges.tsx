@@ -18,7 +18,8 @@ interface TableData {
   marketShare: string,
   coinrankingUrl: string,
   '24hVolume': string,
-  description: string
+  description: string,
+  websiteUrl: string,
 }
 
 // const columns: ColumnsType<TableData> = [
@@ -45,7 +46,7 @@ interface TableData {
 // ]
 
 const Exchanges: React.FC = () => {
-  const [hasRendered, setHasRendered] = useState(false) 
+  const [hasLoaded, setHasLoaded] = useState(false) 
   const [exchanges, setExchanges] = useState([
     {
       key: 0,
@@ -60,9 +61,11 @@ const Exchanges: React.FC = () => {
       "marketShare": "0",
       "coinrankingUrl": "/",
       "24hVolume": "0",
-      "description": ""
+      "description": "",
+      "websiteUrl": "",
   },
   ])
+
 
   useEffect(()=>{
     console.log("get exchanges")
@@ -85,18 +88,18 @@ const Exchanges: React.FC = () => {
     let exchangesCopy = exchanges;
 
     exchanges.map((item, index)=>{
-
       getExchange(item.uuid)
       .then((res)=>{
         let description = res?.data?.exchange?.description ? res?.data?.exchange?.description : ""
         let websiteUrl = res?.data?.exchange?.websiteUrl ? res?.data?.exchange?.websiteUrl : "/"
         exchangesCopy[index].description =  description;
-        
+        exchangesCopy[index].websiteUrl = websiteUrl;
+        setHasLoaded(true)
         setExchanges(exchangesCopy)
       })
     })
     mounted = false;
-  },[exchanges])
+  },[!hasLoaded])
 
 
   return (
