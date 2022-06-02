@@ -20,7 +20,6 @@ const getCoinDetails = async (coinId) => {
       {
         "method": "GET",
         "headers": {
-        // "x-access-token": "coinrankingf4f50f46ee7fff173f7a0c22cdb44bf2369f30d9f4983ab5",
         "content-type": "application/json",
         "accept": "application/json"
       }
@@ -33,11 +32,10 @@ const getCoinDetails = async (coinId) => {
 
 const getCoinHistory = async (coinId, timeperiod) => {
   const res = await fetch(
-    `https://e8ak6srjh8.execute-api.us-east-2.amazonaws.com/coin/${coinId}/history?timePeriod=${timeperiod}`, 
+    `https://e8ak6srjh8.execute-api.us-east-2.amazonaws.com/${coinId}/history?timePeriod=${timeperiod}`, 
       {
         "method": "GET",
         "headers": {
-        // "x-access-token": "coinrankingf4f50f46ee7fff173f7a0c22cdb44bf2369f30d9f4983ab5",
         "content-type": "application/json",
         "accept": "application/json"
       }
