@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Select, Typography, Row, Col, Avatar, Card, Input, Button, Divider } from 'antd';
+import { Typography, Row, Col, Card, Input, Divider, Spin } from 'antd';
 import moment from 'moment'
 import { getNews } from '../services/getNews'
 import { default as NewsArticle } from '../interfaces/NewsArticle';
@@ -60,36 +60,40 @@ const News: React.FC<NewsProps> = ({simplified}: NewsProps) => {
   },[searchTerm])
 
   return (
+
     <>
-      { simplified ? <></> : 
+      {/* { simplified ? <></> : 
         <div className='search-cryto'>
           <Title>Crypto News</Title>
           <Input placeholder='Search News' onChange={(e) => setSearchTerm(e.target.value)} />
           <Divider dashed></Divider>
         </div>
-      }
-      <Row gutter={[ 24, 24]}>
-        {state.map((article, i)=> (
-          <Col xs={24} sm={12} lg={8} key={i}>
-            <a href={article.url} target="_blank" rel="noreferrer">
-            <Card 
-              hoverable 
-              className='news-card' 
-              title={article.name}
-              extra={<img src={article.image.thumbnail.contentUrl}></img>}
-              headStyle={{whiteSpace: "break-spaces"}}
-              bodyStyle={{whiteSpace: "break-spaces"}}
-            >
-                <div style={{color: '#3366BB'}} className='news-descripton-container'>
-                  {article.description}
-                </div>
+      } */}
+      {(state.length>1) ? 
+      <>
+        <Row gutter={[ 24, 24]}>
+          {state.map((article, i)=> (
+            <Col xs={24} sm={12} lg={8} key={i}>
+              <a href={article.url} target="_blank" rel="noreferrer">
+              <Card 
+                hoverable 
+                className='news-card' 
+                title={article.name}
+                extra={<img src={article.image.thumbnail.contentUrl}></img>}
+                headStyle={{whiteSpace: "break-spaces"}}
+                bodyStyle={{whiteSpace: "break-spaces"}}
+              >
+                  <div style={{color: '#3366BB'}} className='news-descripton-container'>
+                    {article.description}
+                  </div>
 
-            </Card>
-            </a>
-          </Col>
-        ))}
-      </Row>
-    </>
+              </Card>
+              </a>
+            </Col>
+          ))}
+        </Row>
+      </> : <><p>Loading News...</p><Spin /></>}
+    </> 
   )
 }
 

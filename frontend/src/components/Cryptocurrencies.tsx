@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import millify from 'millify'
 import { Link } from 'react-router-dom'
-import { Card, Row, Col, Input, Divider, Typography } from 'antd'
+import { Card, Row, Col, Input, Divider, Typography, Spin } from 'antd'
 import { CryptoDetails } from '../components' 
 import { getCoins } from '../services/getCoins'
 import { default as CoinListing } from '../interfaces/CoinListing'
@@ -52,8 +52,7 @@ const Cryptocurrencies: React.FC<CrypocurrenciesProps> = ({simplified}: Crypocur
   },[searchTerm])
 
   return (
-    <>
-      
+    <> 
       { simplified ? <></> : 
         <div className='search-cryto'>
           <Title>Coin Rankings</Title>
@@ -61,6 +60,8 @@ const Cryptocurrencies: React.FC<CrypocurrenciesProps> = ({simplified}: Crypocur
           <Divider dashed></Divider>
         </div>
       }
+
+      {(state.length>1) ?
       <Row gutter={[32, 32]} className="crypto-card-container">
         {state.map((coin) => (
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={coin.uuid}>
@@ -78,7 +79,10 @@ const Cryptocurrencies: React.FC<CrypocurrenciesProps> = ({simplified}: Crypocur
           </Col>
         ))}
       </Row>
+      : <><p>Loading Coins...</p><Spin></Spin></>}
+
     </>
+
   )
 }
 

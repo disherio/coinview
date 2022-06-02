@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row, Typography,  Select } from 'antd'
+import { Col, Row, Typography,  Select, Spin } from 'antd'
 
 import { getCoinHistory } from '../services/getCoins'
 
@@ -20,11 +20,11 @@ const LineChart = ({coinId}) => {
   ])
 
   const [data, setData] = useState({
-    labels: [1654048200, 1654047900, 1654047600],
+    labels: [],
     datasets: [
       {
         label: 'Price in USD',
-        data: ["1.0031865200509371", "1.003959873356293", "1.0039932405747967"],
+        data: [],
         fill: false,
         backgroundColor: '#0071bd',
         borderColor: '#0071bd'
@@ -62,8 +62,8 @@ const LineChart = ({coinId}) => {
     )
   },[timeperiod])
 
-
   return (
+    data.labels.length ?
     <>
       <Row className='chart-header'>
         <Typography.Title level={2} className="chart-title">Price Chart</Typography.Title>
@@ -81,6 +81,7 @@ const LineChart = ({coinId}) => {
         </Select>
       <Line data={data} options={options} />
     </>
+    : <><p>Loading Chart Data</p><Spin /></>
   )
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HTMLReactParser from 'html-react-parser'
 import { useParams } from 'react-router-dom'
 import millify from 'millify'
-import { Col, Row, Typography, Select, Divider, Card, List, Button } from 'antd';
+import { Col, Row, Typography, Select, Divider, Card, List, Button, Spin } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, NumberOutlined, ThunderboltOutlined, CheckOutlined} from '@ant-design/icons'
 import { getCoinDetails, getCoinHistory } from '../services/getCoins'
 import LineChart from './LineChart'
@@ -13,6 +13,7 @@ import { default as CoinDetails } from '../interfaces/CoinDetails'
 const { Title, Text}= Typography
 const { Grid } = Card;
 const { Item } = List;
+const Loading = Spin;
 
 const defaultState: CoinDetails = {
   "uuid": "",
@@ -107,12 +108,14 @@ const CryptoDetails: React.FC = () => {
     return;
   },[useParams])
 
+
   return (
+    state.uuid ?
     <Col className='coin-detail-container'>
         <section>
         <Col className="coin-heading-container">
           <Title level={2} className="coin-name">
-            {state.name} ({state.symbol}): ${state.price}
+            {state.name} ({state.symbol}) {'$'+state.price}
           </Title>
           <p>
             {state.name} live price in US dollars.
@@ -154,10 +157,9 @@ const CryptoDetails: React.FC = () => {
               </Card>
             ))}
           </Col>
-
-
         </Col>
     </Col>
+    : <><p>Loading...</p><Loading /></>
   )
 }
 

@@ -22,7 +22,7 @@ const App: React.FC = () => {
           <Route path="/news" element={<News simplified={false}/>} />
         </Routes>
       </Content>
-      <Footer>©disher.io 2022</Footer>
+      <Footer> © Drew Disher {new Date().getFullYear()}</Footer>
     </Layout>
   </>
   )

@@ -1,10 +1,9 @@
 const getCoins = async (count) => {
   const res = await fetch(
-      `https://api.coinranking.com/v2/coins?limit=${count}`, 
+      `https://e8ak6srjh8.execute-api.us-east-2.amazonaws.com/coins?limit=${count}`, 
       {
         "method": "GET",
         "headers": {
-        "x-access-token": "",
         "content-type": "application/json",
         "accept": "application/json"
       }
@@ -17,11 +16,11 @@ const getCoins = async (count) => {
 
 const getCoinDetails = async (coinId) => {
   const res = await fetch(
-      `https://api.coinranking.com/v2/coin/${coinId}`, 
+      `https://e8ak6srjh8.execute-api.us-east-2.amazonaws.com/coin/${coinId}`, 
       {
         "method": "GET",
         "headers": {
-        "x-access-token": "",
+        // "x-access-token": "coinrankingf4f50f46ee7fff173f7a0c22cdb44bf2369f30d9f4983ab5",
         "content-type": "application/json",
         "accept": "application/json"
       }
@@ -34,11 +33,11 @@ const getCoinDetails = async (coinId) => {
 
 const getCoinHistory = async (coinId, timeperiod) => {
   const res = await fetch(
-    `https://api.coinranking.com/v2/coin/${coinId}/history?timePeriod=${timeperiod}`, 
+    `https://e8ak6srjh8.execute-api.us-east-2.amazonaws.com/coin/${coinId}/history?timePeriod=${timeperiod}`, 
       {
         "method": "GET",
         "headers": {
-        "x-access-token": "",
+        // "x-access-token": "coinrankingf4f50f46ee7fff173f7a0c22cdb44bf2369f30d9f4983ab5",
         "content-type": "application/json",
         "accept": "application/json"
       }

@@ -56,3 +56,7 @@
 .ant-card-head-title {
   white-space: break-spaces;
 }
+
+.show-more {
+  padding-left: 2rem;
+}
